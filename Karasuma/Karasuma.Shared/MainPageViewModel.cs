@@ -20,6 +20,18 @@ namespace Karasuma
             {
                 count = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Count)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Remaining)));
+            }
+        }
+
+        public int Remaining
+        {
+            get
+            {
+                var result = SentenceList != null
+                    ? SentenceList.Count - count
+                    : 10;
+                return result;
             }
         }
 
