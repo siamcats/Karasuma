@@ -15,67 +15,96 @@
         <helper:ToUpperConverter x:Key="ToUpper" />
         <Storyboard x:Name="ErrorStoryboardWasm">
             <DoubleAnimation
-                Storyboard.TargetName="MyAnimatedRectangle"
+                Storyboard.TargetName="MistakeFlashing"
                 Storyboard.TargetProperty="Opacity"
-                From="0.0" To="1" Duration="0:0:0.05"/>
+                From="0.0" To="0.8" Duration="0:0:0.02"/>
             <DoubleAnimation
-                Storyboard.TargetName="MyAnimatedRectangle"
+                Storyboard.TargetName="MistakeFlashing"
                 Storyboard.TargetProperty="Opacity"
                 From="1" To="0.0" Duration="0:0:0.1"/>
         </Storyboard>
         <Storyboard x:Name="ErrorStoryboard">
             <DoubleAnimationUsingKeyFrames
-                    Storyboard.TargetName="MyAnimatedRectangle"
+                    Storyboard.TargetName="MistakeFlashing"
                     Storyboard.TargetProperty="Opacity">
-                <DiscreteDoubleKeyFrame KeyTime="0:0:0.05" Value="1"/>
+                <DiscreteDoubleKeyFrame KeyTime="0:0:0.02" Value="0.8"/>
                 <DiscreteDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <!--パレット-->
+        <SolidColorBrush x:Key="unoPink" Color="#f85977"/>
+        <SolidColorBrush x:Key="unoGreen" Color="#67e5ad"/>
+        <SolidColorBrush x:Key="unoBlue" Color="#008ffb"/>
+        <SolidColorBrush x:Key="unoPurple" Color="#7a67f8"/>
+        <SolidColorBrush x:Key="ash0" Color="#ffffff"/>
+        <SolidColorBrush x:Key="ash1" Color="#f7f7f7"/>
+        <SolidColorBrush x:Key="ash2" Color="#919191"/>
+        <SolidColorBrush x:Key="ash3" Color="#616161"/>
     </Page.Resources>
     <Page.DataContext>
         <local:MainPageViewModel />
     </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.6*"/>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="800"/>
+            <ColumnDefinition Width="700"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" Background="#f4f2f3"/>
-        <RelativePanel Grid.Row="0" Grid.Column="1" Background="#f4f2f3">
-            <Grid RelativePanel.AlignBottomWithPanel="True"
-                  RelativePanel.AlignLeftWithPanel="True"
-                  RelativePanel.AlignRightWithPanel="True"
-                  x:Name="Origin" Margin="100,10,100,10" Background="#ffffff" CornerRadius="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Border  Grid.Column="0" Background="#008ffb">
-                    <TextBlock Text="Next" Foreground="#ffffff" FontSize="18" Margin="20,10,20,10"/>
-                </Border>
-                <Border Grid.Column="1" Background="#ffffff">
-                    <TextBlock Text="{x:Bind vm.SentenceNext.KanjiKana, Mode=OneWay}" Foreground="#474747" FontSize="20" Margin="0,0,20,0" TextAlignment="Right" VerticalAlignment="Center"/>
-                </Border>
-            </Grid>
-            <Border RelativePanel.AlignLeftWith="Origin" RelativePanel.Above="Origin"
-                    Margin="100,10,100,10" Background="#67e5ad" CornerRadius="10">
-                <StackPanel>
-                    <TextBlock Text="Remaining" Foreground="#ffffff" FontSize="18" Margin="20,10,20,0"/>
-                    <TextBlock Text="{x:Bind vm.Remaining, Mode=OneWay}" Foreground="#ffffff" FontSize="36" Margin="20,0,20,10" TextAlignment="Center"/>
+        <Border Grid.Row="0" Grid.ColumnSpan="3" Background="{StaticResource ash1}"/>
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Remainings" Foreground="{StaticResource ash3}" FontSize="16" Margin="0,10,0,10" TextAlignment="Center"/>
+                    <Border Background="{StaticResource unoBlue}" CornerRadius="10" Height="80" Width="80">
+                        <TextBlock Text="{x:Bind vm.Remaining, Mode=OneWay}" Foreground="{StaticResource ash0}" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                    </Border>
                 </StackPanel>
-            </Border>
-        </RelativePanel>
-        <Border Grid.Row="0" Grid.Column="2" Background="#f4f2f3"/>
-        <Border Grid.Row="1" Grid.Column="0" Background="#ffffff"/>
-        <Border Grid.Row="1" Grid.Column="2" Background="#ffffff"/>
+                <StackPanel Margin="10">
+                    <TextBlock Text="Mistakes" Foreground="{StaticResource ash3}" FontSize="16" Margin="10" TextAlignment="Center"/>
+                    <Grid>
+                        <Border Background="{StaticResource unoGreen}" CornerRadius="10" Height="80" Width="80">
+                            <Grid>
+                                <!--<Border x:Name="MistakeFlashing" Background="{StaticResource unoPink}" CornerRadius="10" Height="80" Width="80" Opacity="0"/>-->
+                                <TextBlock Text="{x:Bind vm.Mistake, Mode=OneWay}" Foreground="{StaticResource ash0}" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <TextBlock Text="Accuracy" Foreground="{StaticResource ash3}" FontSize="16" Margin="10" TextAlignment="Center"/>
+                    <Border Background="{StaticResource unoPink}" CornerRadius="10" Height="80" Width="120">
+                        <Grid>
+                            <TextBlock Text="{x:Bind vm.Accuracy, Mode=OneWay}" Foreground="{StaticResource ash0}" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Text="%" Foreground="{StaticResource ash0}" FontSize="14" VerticalAlignment="Bottom" TextAlignment="Right" Margin="0,0,5,2"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+                <StackPanel Margin="10">
+                    <TextBlock Text="Speed" Foreground="{StaticResource ash3}" FontSize="16" Margin="10" TextAlignment="Center"/>
+                    <Border Background="{StaticResource unoPurple}" CornerRadius="10" Height="80" Width="120">
+                        <Grid>
+                            <TextBlock Text="{x:Bind vm.Kpm, Mode=OneWay}" Foreground="{StaticResource ash0}" FontSize="36" VerticalAlignment="Center" TextAlignment="Center"/>
+                            <TextBlock Text="KPM" Foreground="{StaticResource ash0}" FontSize="14" VerticalAlignment="Bottom" TextAlignment="Right" Margin="0,0,5,2"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel x:Name="Origin" Margin="0,10,0,20" CornerRadius="10">
+                <TextBlock Text="Next Sentence" Foreground="{StaticResource ash3}" FontSize="16" Margin="0,0,0,10"/>
+                <Border Grid.Column="0" Background="{StaticResource ash0}" Height="40" VerticalAlignment="Center">
+                    <TextBlock Text="{x:Bind vm.SentenceNext.KanjiKana, Mode=OneWay}" Foreground="{StaticResource ash2}"
+                               FontSize="20" Margin="10" TextAlignment="Right" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+        <Border Grid.Row="1" Grid.ColumnSpan="3" Background="{StaticResource ash0}"/>
         <StackPanel x:Name="CenterPanel" Grid.Row="1" Grid.Column="1"
-                    Visibility="{x:Bind vm.IsPause, Converter={StaticResource VisibilityReverse}, Mode=OneWay}" Background="#ffffff" Padding="50,20,10,30">
+                    Visibility="{x:Bind vm.IsPause, Converter={StaticResource VisibilityReverse}, Mode=OneWay}" Padding="0,20,10,30">
             <TextBlock Text="{x:Bind vm.SentenceCurrent.KanjiKana, Mode=OneWay}"
                         Foreground="#2b2a26" FontSize="24"/>
             <TextBlock Text="{x:Bind vm.SentenceCurrent.Kana, Mode=OneWay}"
@@ -89,10 +118,8 @@
         </StackPanel>
         <TextBlock x:Name="TextBoxMessage" Grid.Row="1" Grid.Column="1"
                    Text="{x:Bind vm.Message, Mode=OneWay}" Visibility="{x:Bind vm.IsPause, Converter={StaticResource Visibility}, Mode=OneWay}" Foreground="#f85977" FontSize="24" TextAlignment="Center" VerticalAlignment="Center"/>
-        <Border Grid.Row="2" Grid.Column="0" Background="#2b2a26"/>
-        <Border Grid.Row="2" Grid.Column="1" Background="#2b2a26"/>
-        <Border Grid.Row="2" Grid.Column="2" Background="#2b2a26"/>
-        <Rectangle Grid.Row="2" Grid.ColumnSpan="3" x:Name="MyAnimatedRectangle" Fill="#f85977" Opacity="0"/>
+        <Border Grid.Row="2" Grid.ColumnSpan="3" Background="#2b2a26"/>
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="3" x:Name="MistakeFlashing" Fill="{StaticResource unoPink}" Opacity="0"/>
         <TextBox x:Name="TextBox1" Width="0" Height="0"/>
     </Grid>
 </Page>

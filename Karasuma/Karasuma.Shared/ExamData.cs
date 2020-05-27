@@ -81,8 +81,15 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "丸 竹 夷 二 押 御池 姉 三 六角 蛸 錦",
-                Kana = "まるたけえびすにおしおいけあねさんろっかくたこにしき",
+                KanjiKana = "丸 竹 夷 二 押 御池",
+                Kana = "まるたけえびすにおしおいけ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "姉 三 六角 蛸 錦",
+                Kana = "あねさんろっかくたこにしき",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
@@ -109,8 +116,8 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "哲学の道を散策しながら思索にふける",
-                Kana = "てつがくのみちをさんさくしながらしさくにふける",
+                KanjiKana = "哲学の道で思索にふける",
+                Kana = "てつがくのみちでしさくにふける",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
@@ -137,15 +144,15 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "若狭を目指す周山街道ツーリング",
-                Kana = "わかさをめざすしゅうざんかいどうつーりんぐ",
+                KanjiKana = "若狭を目指せ周山街道",
+                Kana = "わかさをめざせしゅうざんかいどう",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
             new SentenceDefinition
             {
-                KanjiKana = "歌舞練場から聞こえる稽古の音",
-                Kana = "かぶれんじょうからきこえるけいこのおと",
+                KanjiKana = "歌舞練場から漏れ聞こえる稽古の音",
+                Kana = "かぶれんじょうからもれきこえるけいこのおと",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
@@ -172,8 +179,8 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "梅小路の鉄道博物館でディーゼル機関車を見よう",
-                Kana = "うめこうじのてつどうはくぶつかんででぃーぜるきかんしゃをみよう",
+                KanjiKana = "鉄道博物館でディーゼル機関車を見よう",
+                Kana = "てつどうはくぶつかんででぃーぜるきかんしゃをみよう",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
@@ -193,7 +200,7 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "京滋バイパス久御山じゃんくしょん",
+                KanjiKana = "京滋バイパス久御山ジャンクション",
                 Kana = "けいじばいぱすくみやまじゃんくしょん",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
@@ -223,6 +230,13 @@ namespace Karasuma
             {
                 KanjiKana = "広河原でスキーをしよう",
                 Kana = "ひろがわらですきーをしよう",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "大文字焼と呼ばないで",
+                Kana = "だいもんじやきとよばないで",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },

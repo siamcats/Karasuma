@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using Karasuma.Models;
@@ -11,6 +12,8 @@ namespace Karasuma
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        Stopwatch sw = new Stopwatch();
 
         private int count = 0;
         public int Count
@@ -30,8 +33,56 @@ namespace Karasuma
             {
                 var result = SentenceList != null
                     ? SentenceList.Count - count
-                    : 10;
+                    : 0;
                 return result;
+            }
+        }
+
+        private int mistake = 0;
+        public int Mistake
+        {
+            get => mistake;
+            set
+            {
+                mistake = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Mistake)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Accuracy)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Kpm)));
+            }
+        }
+
+        private int take = 0;
+        public int Take
+        {
+            get => take;
+            set
+            {
+                take = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Take)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Accuracy)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Kpm)));
+            }
+        }
+
+        public string Accuracy
+        {
+            get
+            {
+                var result = take != 0
+                    ? ( take - mistake ) * 100 / (float)take
+                    : 0;
+                return string.Format("{0:f2}",result);
+            }
+        }
+
+        public string Kpm
+        {
+            get
+            {;
+                var result = sw.IsRunning
+                    ? 60 / sw.Elapsed.TotalSeconds * (take - mistake)
+                    : 0;
+                return string.Format("{0:f2}", result);
             }
         }
 
@@ -41,6 +92,8 @@ namespace Karasuma
             get => isPause;
             set
             {
+                if (isPause && !value) sw.Start();
+                if (!isPause && value) sw.Reset();
                 isPause = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsPause)));
             }
@@ -79,7 +132,7 @@ namespace Karasuma
             }
         }
 
-        private string message = "スペースキーを押して開始（反応しない場合はタブキーを押してください）";
+        private string message = "SPACE を押して開始（反応しない場合は TAB を押してください）";
         public string Message
         {
             get => message;

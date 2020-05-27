@@ -56,6 +56,9 @@ namespace Karasuma
                     vm.SentenceList = vm.SentenceList.Take(10).ToList();
                     vm.SentenceCurrent = vm.SentenceList[0];
                     vm.SentenceNext = vm.SentenceList[1];
+                    vm.Take = 0;
+                    vm.Mistake = 0;
+                    vm.Count = 0;
                     vm.IsPause = false;
                 }
                 return;
@@ -66,9 +69,12 @@ namespace Karasuma
             if (!KanaUtils.KeyHenkan.TryGetValue(e.Key, out key)) return;
             var result = vm.SentenceCurrent.Type(key);
 
+            vm.Take++;
+
             //ミス
             if (!result)
             {
+                vm.Mistake++;
 #if __WASM__
                 ErrorStoryboardWasm.Begin();
 #else
@@ -92,10 +98,10 @@ namespace Karasuma
                 else
                 {
                     vm.IsPause = true;
-                    vm.Count = 0;
                     vm.SentenceList.Clear();
                     vm.SentenceCurrent = null;
                     vm.SentenceCurrent = null;
+                    vm.Count = 0;
                 }
             }
         }
