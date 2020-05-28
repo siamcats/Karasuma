@@ -43,7 +43,7 @@ namespace Karasuma
         void UIElement_OnKeyDown(object sender, KeyRoutedEventArgs e)
         {
             e.Handled = true;
-            Debug.WriteLine($"key down {e.Key}");
+            //Debug.WriteLine($"key down {e.Key}");
 
             //開始前
             if (vm.IsPause)

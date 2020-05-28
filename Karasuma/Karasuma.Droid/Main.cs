@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Com.Nostra13.Universalimageloader.Core;
 using Windows.UI.Xaml.Media;
+using System.Drawing;
 
 namespace Karasuma.Droid
 {
@@ -38,6 +39,7 @@ namespace Karasuma.Droid
 			ImageLoader.Instance.Init(config);
 
 			ImageSource.DefaultImageLoader = ImageLoader.Instance.LoadImageAsync;
+
 		}
 	}
 }
