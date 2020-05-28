@@ -240,6 +240,125 @@ namespace Karasuma
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
+            new SentenceDefinition
+            {
+                KanjiKana = "先の祭りと後の祭り",
+                Kana = "さきのまつりとあとのまつり",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "下鴨納涼古本まつり",
+                Kana = "しもがものうりょうふるほんまつり",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "祇園精舎の鐘の声",
+                Kana = "ぎおんしょうじゃのかねのこえ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "東風吹かば匂いおこせよ梅の花",
+                Kana = "こちふかばにおいおこせようめのはな",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "新緑まばゆい葵祭",
+                Kana = "しんりょくまばゆいあおいまつり",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "時代祭の華やぐ歴史絵巻",
+                Kana = "じだいまつりのはなやぐれきしえまき",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "コトコト歩く古都京都",
+                Kana = "ことことあるくこときょうと",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "おばんざい食べ放題",
+                Kana = "おばんざいたべほうだい",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "稲荷詣に愛宕詣",
+                Kana = "いなりもうでにあたごもうで",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "ぶぶ漬けが出てきたら帰れの合図",
+                Kana = "ぶぶづけがでてきたらかえれのあいず",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "嵐電太秦広隆寺",
+                Kana = "らんでんうずまさこうりゅうじ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "平等院鳳凰堂のシンメトリーな様式美",
+                Kana = "びょうどういんほうおうどうのしんめとりーなようしきび",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "雪化粧の金閣寺",
+                Kana = "ゆきげしょうのきんかくじ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "みやこめっせでワンマンライブ",
+                Kana = "みやこめっせでわんまんらいぶ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "重森三玲のモダンな庭園",
+                Kana = "しげもりみれいのもだんなていえん",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "琵琶湖疎水といえば水路閣とインクライン",
+                Kana = "びわこそすいといえばすいろかくといんくらいん",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "めっちゃまっちゃな宇治抹茶",
+                Kana = "めっちゃまっちゃなうじまっちゃ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
         };
     }
 }

@@ -31,7 +31,6 @@
                 <DiscreteDoubleKeyFrame KeyTime="0:0:0.1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
-        <!--パレット-->
         <SolidColorBrush x:Key="unoPink" Color="#f85977"/>
         <SolidColorBrush x:Key="unoGreen" Color="#67e5ad"/>
         <SolidColorBrush x:Key="unoBlue" Color="#008ffb"/>
@@ -98,7 +97,7 @@
                 <TextBlock Text="Next Sentence" Foreground="{StaticResource ash3}" FontSize="16" Margin="0,0,0,10"/>
                 <Border Grid.Column="0" Background="{StaticResource ash0}" Height="40" VerticalAlignment="Center">
                     <TextBlock Text="{x:Bind vm.SentenceNext.KanjiKana, Mode=OneWay}" Foreground="{StaticResource ash2}"
-                               FontSize="20" Margin="10" TextAlignment="Right" VerticalAlignment="Center"/>
+                               FontSize="20" Margin="10,10,20,10" TextAlignment="Right" VerticalAlignment="Center"/>
                 </Border>
             </StackPanel>
         </StackPanel>
@@ -117,7 +116,8 @@
             </Grid>
         </StackPanel>
         <TextBlock x:Name="TextBoxMessage" Grid.Row="1" Grid.Column="1"
-                   Text="{x:Bind vm.Message, Mode=OneWay}" Visibility="{x:Bind vm.IsPause, Converter={StaticResource Visibility}, Mode=OneWay}" Foreground="#f85977" FontSize="24" TextAlignment="Center" VerticalAlignment="Center"/>
+                   Text="{x:Bind vm.Message, Mode=OneWay}" Visibility="{x:Bind vm.IsPause, Converter={StaticResource Visibility}, Mode=OneWay}"
+                   Foreground="#f85977" FontSize="24" TextAlignment="Center" VerticalAlignment="Center"/>
         <Border Grid.Row="2" Grid.ColumnSpan="3" Background="#2b2a26"/>
         <Rectangle Grid.Row="0" Grid.ColumnSpan="3" x:Name="MistakeFlashing" Fill="{StaticResource unoPink}" Opacity="0"/>
         <TextBox x:Name="TextBox1" Width="0" Height="0"/>

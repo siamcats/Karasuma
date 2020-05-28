@@ -132,7 +132,7 @@ namespace Karasuma
             }
         }
 
-        private string message = "SPACE を押して開始（反応しない場合は TAB を押してください）";
+        private string message = "Press SPACE to start \r\n If not, press TAB please";
         public string Message
         {
             get => message;
