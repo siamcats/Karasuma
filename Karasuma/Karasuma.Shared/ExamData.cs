@@ -60,8 +60,8 @@ namespace Karasuma
             },
             new SentenceDefinition
             {
-                KanjiKana = "柊野別れの最期の別れ",
-                Kana = "ひらぎのわかれのさいごのわかれ",
+                KanjiKana = "柊野別れで最期の別れ",
+                Kana = "ひらぎのわかれでさいごのわかれ",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
@@ -356,6 +356,69 @@ namespace Karasuma
             {
                 KanjiKana = "めっちゃまっちゃな宇治抹茶",
                 Kana = "めっちゃまっちゃなうじまっちゃ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "四条烏丸西入ル鉾町生まれのお嬢さん",
+                Kana = "しじょうからすまにしいるほこちょううまれのおじょうさん",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "秋は叡電もみじのトンネル",
+                Kana = "あきはえいでんもみじのとんねる",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "春は嵐電さくらのトンネル",
+                Kana = "はるはらんでんさくらのとんねる",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "三条京阪土下座像前で待ち合わせ",
+                Kana = "さんじょうけいはんどげざぞうまえでまちあわせ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "大階段駆け上がり競走",
+                Kana = "だいかいだんかけあがりきょうそう",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "先斗町デートに使える人気のお店",
+                Kana = "ぽんとちょうでーとにつかえるにんきのおみせ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "小倉山から渡月橋を望む",
+                Kana = "おぐらやまからとげつきょうをのぞむ",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "弘法さんと天神さん",
+                Kana = "こうぼうさんとてんじんさん",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "得体の知れない不吉な塊",
+                Kana = "えたいのしれないふきつなかたまり",
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },

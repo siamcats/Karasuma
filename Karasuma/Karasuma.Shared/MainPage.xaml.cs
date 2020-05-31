@@ -19,6 +19,7 @@ using Karasuma.Models;
 using Uno;
 using Windows.System;
 using Karasuma.Helper;
+using Windows.UI.Input;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -35,21 +36,39 @@ namespace Karasuma
         {
             this.InitializeComponent();
 
+            Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown; //Wasm非対応
+            //Dispatcher.AcceleratorKeyActivated += Dispatcher_AccelaratorKeyActivated;
+        }
+
+        private void CoreWindow_KeyDown(CoreWindow sender, KeyEventArgs e)
+        {
+            Debug.WriteLine("CoreWindow");
+            e.Handled = true;
+            Keystroke(e.VirtualKey);
+        }
+
+        private void Dispatcher_AccelaratorKeyActivated(CoreDispatcher sender, AcceleratorKeyEventArgs e)
+        {
+            Debug.WriteLine("Dispatcher_AccelaratorKeyActivated");
+        }
+
+        private void UIElement_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            Debug.WriteLine("UIElement");
+            e.Handled = true;
 #if __WASM__
-            TextBox1.Visibility = Visibility.Collapsed;
+            Keystroke(e.Key);
 #endif
         }
 
-        void UIElement_OnKeyDown(object sender, KeyRoutedEventArgs e)
-        {
-            e.Handled = true;
-            //Debug.WriteLine($"key down {e.Key}");
 
+        private void Keystroke(VirtualKey key)
+        {
             //開始前
             if (vm.IsPause)
             {
                 //スペースで開始
-                if (e.Key == VirtualKey.Space)
+                if (key == VirtualKey.Space)
                 {
                     vm.SentenceList = ExamData.Sample.Select(sd => new Sentence(sd)).ToList();
                     vm.SentenceList.Shuffle();
@@ -65,9 +84,9 @@ namespace Karasuma
             }
 
             //開始後
-            var key = string.Empty;
-            if (!KanaUtils.KeyHenkan.TryGetValue(e.Key, out key)) return;
-            var result = vm.SentenceCurrent.Type(key);
+            var strKey = string.Empty;
+            if (!KanaUtils.KeyHenkan.TryGetValue(key, out strKey)) return;
+            var result = vm.SentenceCurrent.Type(strKey);
 
             vm.Take++;
 
@@ -92,7 +111,7 @@ namespace Karasuma
                     vm.SentenceCurrent = vm.SentenceList[vm.Count];
                     vm.SentenceNext = vm.Count < vm.SentenceList.Count - 1
                         ? vm.SentenceList?[vm.Count + 1]
-                        : new Sentence(new SentenceDefinition { KanjiKana="",Kana="" });
+                        : new Sentence(new SentenceDefinition { KanjiKana = "", Kana = "" });
                 }
                 //全文完了
                 else
@@ -104,6 +123,15 @@ namespace Karasuma
                     vm.Count = 0;
                 }
             }
+        }
+
+        private async void TweetButton_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            var text = "あなたのタイピング速度は " + vm.Kpm + " KPMです。";
+            var url = "https://typeratta.azurewebsites.net";
+            var hashtag = "UnoPlatform";
+            var intent = Uri.EscapeUriString("https://twitter.com/intent/tweet?text="+ text +"&url=" + url + "&hashtags=" + hashtag);
+            await Launcher.LaunchUriAsync(new Uri(intent));
         }
     }
 }
