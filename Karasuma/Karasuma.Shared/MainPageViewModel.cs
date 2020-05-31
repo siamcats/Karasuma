@@ -79,7 +79,7 @@ namespace Karasuma
         {
             get
             {;
-                var result = sw.IsRunning
+                var result = take != 0
                     ? 60 / sw.Elapsed.TotalSeconds * (take - mistake)
                     : 0;
                 return string.Format("{0:f2}", result);
@@ -92,10 +92,20 @@ namespace Karasuma
             get => isPause;
             set
             {
-                if (isPause && !value) sw.Start();
-                if (!isPause && value) sw.Reset();
+                if (isPause && !value) sw.Restart(); //停止→稼働に切り替えるときに、ストップウォッチ開始
+                if (!isPause && value) sw.Stop(); //稼働→停止に切り替えるときに、ストップウォッチ停止
                 isPause = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsPause)));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CanTweet)));
+            }
+        }
+
+        public bool CanTweet
+        {
+            get
+            {
+                if (isPause && take > 0) return true;
+                return false;
             }
         }
 
