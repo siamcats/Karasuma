@@ -422,6 +422,21 @@ namespace Karasuma
                 Category = Category.京都,
                 Tags = new List<Tag>{}
             },
+            new SentenceDefinition
+            {
+                KanjiKana = "得体の知れない不吉な塊",
+                Kana = "えたいのしれないふきつなかたまり",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+            new SentenceDefinition
+            {
+                KanjiKana = "山に比叡と愛宕と鞍馬",
+                Kana = "やまにひえいとあたごとくらま",
+                Category = Category.京都,
+                Tags = new List<Tag>{}
+            },
+
         };
     }
 }
